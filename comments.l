@@ -1,16 +1,16 @@
 %{
-int even = 0;
+int synerr = 0;
 %}
 
 %%
-\"(.|\n)*\" {ECHO;}
-\*\*.*\n 
-\{(.|\n)*\}
-\{|\} {print("syntax error\n");}
+\{([^\}]|\n)*\}
+\".*\" {ECHO;}
+\*\*.*$
+\{|\} {printf("syntax error\n"); synerr = 1;}
+(.|\n) {if(!synerr){ECHO;}}
 %%
 
 int main(){
 	yylex();
-	printf("%d\n", even);
 	return 0;	
 }
