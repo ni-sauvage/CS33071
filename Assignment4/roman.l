@@ -8,21 +8,23 @@ int max_val = 0;
 %%
 I[LCDM] 					{ return OTHER; }
 V[XLCDM] 					{ return OTHER; }
-X[CDM] 						{ return OTHER; }
+X[DM] 						{ return OTHER; }
 L[CDM]						{ return OTHER; }
 DM							{ return OTHER; }
 I{4,}|X{4,}|C{4,}|M{4,}		{ return OTHER; }
 V{2,}|L{2,}					{ return OTHER; }
-printf("9\n"); 
+
 I[XLCDM]I 					{ return OTHER; }
 X[VLCDM]X 					{ return OTHER; }
 C[IVLDM]C 					{ return OTHER; }
-M[IVLDC]M 					{ return OTHER; }
-		
+M[IVLD]M 					{ return OTHER; }
+IIX|IIV|XXL|XXC|CCD|CCM 	{ return OTHER; }
+
+
 IX|IV|XL|XC|CD|CM 			{ yylval = to_dec(yytext[1]) - to_dec(yytext[0]); if(!max_val) { 
 																				max_val = yylval;
 																				return NUM;
-																			  } else {
+																			  } else if{
 																				if(yylval >= max_val) {
 																					return OTHER;
 																				} else {
