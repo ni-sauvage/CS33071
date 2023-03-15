@@ -6,34 +6,34 @@ int max_val = 0;
 %}
 
 %%
-I[LCDM] 			{ return OTHER; }
-V[XLCDM] 			{ return OTHER; }
-X[CDM] 				{ return OTHER; }
-L[CDM]				{ return OTHER; }
-DM					{ return OTHER; }
-[IXCM]{4,}			{ return OTHER; }
-[VL]{2,}			{ return OTHER; }
-
-I[XLCDM]I 			{ return OTHER; }
-X[VLCDM]X 			{ return OTHER; }
-C[IVLDM]C 			{ return OTHER; }
-M[IVLDC]M 			{ return OTHER; }
-
-IX|IV|XL|XC|CD|CM 	{ yylval = to_dec(yytext[1]) - to_dec(yytext[0]); if(!max_val) { 
-																		max_val = yylval;
-																		return NUM;
-																	  } else {
-																		if(yylval >= max_val) {
-																			return OTHER;
-																		} else {
-																			return NUM;
-																		}
-																	  }
-}
-[IVXLCDM] 			{ yylval = to_dec(yytext[0]); return NUM; }
-[ \t]
-\n 					{ return EOL; }
-. 					{ return OTHER; }
+I[LCDM] 					{ return OTHER; }
+V[XLCDM] 					{ return OTHER; }
+X[CDM] 						{ return OTHER; }
+L[CDM]						{ return OTHER; }
+DM							{ return OTHER; }
+I{4,}|X{4,}|C{4,}|M{4,}		{ return OTHER; }
+V{2,}|L{2,}					{ return OTHER; }
+printf("9\n"); 
+I[XLCDM]I 					{ return OTHER; }
+X[VLCDM]X 					{ return OTHER; }
+C[IVLDM]C 					{ return OTHER; }
+M[IVLDC]M 					{ return OTHER; }
+		
+IX|IV|XL|XC|CD|CM 			{ yylval = to_dec(yytext[1]) - to_dec(yytext[0]); if(!max_val) { 
+																				max_val = yylval;
+																				return NUM;
+																			  } else {
+																				if(yylval >= max_val) {
+																					return OTHER;
+																				} else {
+																					return NUM;
+																				}
+																			  }
+}		
+[IVXLCDM] 					{ yylval = to_dec(yytext[0]); return NUM; }
+[ \t]		
+\n 							{ max_val = 0; return EOL; }
+. 							{ return OTHER; }
 %%
 
 int count_digits(int a){
