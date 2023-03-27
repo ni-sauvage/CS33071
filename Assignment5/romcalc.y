@@ -9,7 +9,7 @@
 
 %token NUM
 %token ADD SUB DIV MUL
-%token EOL OTHER
+%token EOL OTHER OPPAREN CLPAREN
 
 %%
 

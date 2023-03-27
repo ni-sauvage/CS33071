@@ -21,10 +21,12 @@ X[VLCDM]X 					{ return OTHER; }
 C[IVLDM]C 					{ return OTHER; }
 M[IVLD]M 					{ return OTHER; }
 IIX|IIV|XXL|XXC|CCD|CCM 	{ return OTHER; }
-"+"                           { return ADD; }
-"-"                           { return SUB; }
-"/"                           { return DIV; }
-"*"                           { return MUL; }
+"+"    { max_val = INT_MAX_VAL; return ADD; }
+"-"    { max_val = INT_MAX_VAL; return SUB; }
+"/"    { max_val = INT_MAX_VAL; return DIV; }
+"*"    { max_val = INT_MAX_VAL; return MUL; }
+"{" { max_val = INT_MAX_VAL; return OPPAREN; }
+"}"	{ max_val = INT_MAX_VAL; return CLPAREN; }
 
 
 IX|IV|XL|XC|CD|CM 			{ yylval = to_dec(yytext[1]) - to_dec(yytext[0]); if(yylval >= max_val) { return OTHER; } else {max_val = yylval; return NUM;} }
