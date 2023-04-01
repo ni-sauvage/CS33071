@@ -1,2 +1,6 @@
 a.out
 *.c
+*.h
+*.zip
+Makefile
+*.txt

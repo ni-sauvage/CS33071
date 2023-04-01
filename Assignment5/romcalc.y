@@ -25,10 +25,12 @@ exp: factor
 factor: prefix
  | factor MUL prefix {$$ = $1 * $3;}
  | factor DIV prefix {$$ = $1 / $3;}
+ | OPPAREN exp CLPAREN {$$ = $2;}
  ;
 
 prefix: number
  | SUB number {$$ = -$2;}
+ | OPPAREN prefix CLPAREN {$$ = $2;}
  ;
 
 number: NUM
