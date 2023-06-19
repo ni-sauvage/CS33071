@@ -1,5 +1,5 @@
 # CS33071
-## A Repository for [CSU33071 Compiler Design](https://www.scss.tcd.ie/John.Waldron/CSU33071) as taught by Professor John Waldron in 2023
+## A Repository for [CSU33071 Compiler Design](https://www.scss.tcd.ie/John.Waldron/CSU33071) as taught by Professor John Waldron in 2023 of [SCSS, TCD](https://www.scss.tcd.ie/).
 
 ### [Assignment 1](https://github.com/ni-sauvage/CS33071/blob/main/even.l)
 A simple assignment which [required](https://www.scss.tcd.ie/John.Waldron/CSU33071/Assignments/even.txt) writing a flex programme to count even numbers in an input stream.
